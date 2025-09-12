@@ -150,7 +150,8 @@
                     <div class="flex items-center justify-between">
                         <div>
                             <h2 class="text-lg font-bold">PERPUSTAKAAN</h2>
-                            <p class="text-xs opacity-90">Library Card</p>
+                            <p class="text-xs opacity-90">SMA NEGERI 1 DARUSSALAM</p>
+                            <p class="text-xs opacity-80">Library Card</p>
                         </div>
                         <div class="text-2xl">📚</div>
                     </div>
@@ -633,7 +634,8 @@
                     <div style="display: flex; align-items: center; justify-content: space-between;">
                         <div>
                             <h2 style="font-size: 18px; font-weight: bold; margin: 0; line-height: 1.2;">PERPUSTAKAAN</h2>
-                            <p style="font-size: 12px; opacity: 0.9; margin: 0;">Library Card</p>
+                            <p style="font-size: 11px; opacity: 0.9; margin: 0;">SMA NEGERI 1 DARUSSALAM</p>
+                            <p style="font-size: 10px; opacity: 0.8; margin: 0;">Library Card</p>
                         </div>
                         <div style="font-size: 24px;">📚</div>
                     </div>
@@ -869,5 +871,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97ddd6c84494834b',t:'MTc1NzY2MzY4OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97dde25f72bf8342',t:'MTc1NzY2NDE2NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
