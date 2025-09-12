@@ -1,4 +1,3 @@
-
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -196,7 +195,7 @@
                 </div>
                 <div class="overflow-x-auto">
                     <table class="w-full">
-                        <thead class="bg-gray-50">
+                        <thead id="tableHeader" class="bg-gray-50">
                             <tr>
                                 <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama</th>
                                 <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
@@ -385,6 +384,14 @@
                     if (selectedUserType === 'siswa') {
                         document.getElementById('adminControls').style.display = 'none';
                         document.getElementById('printAllBtn').style.display = 'none';
+                        
+                        // Update table header for students - only show Nama and Status
+                        document.getElementById('tableHeader').innerHTML = `
+                            <tr>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            </tr>
+                        `;
                     }
                     
                     // Load members data
@@ -472,7 +479,15 @@
             membersData.forEach((member, index) => {
                 const option = document.createElement('option');
                 option.value = index;
-                option.textContent = `${member.Nama || member.Name || 'Nama tidak tersedia'} - ${member.ID || member.id || 'ID tidak tersedia'}`;
+                
+                // For students, only show their own name without ID for privacy
+                if (userType === 'siswa') {
+                    option.textContent = `${member.Nama || member.Name || 'Nama tidak tersedia'}`;
+                } else {
+                    // For admin, show full details
+                    option.textContent = `${member.Nama || member.Name || 'Nama tidak tersedia'} - ${member.ID || member.id || 'ID tidak tersedia'}`;
+                }
+                
                 select.appendChild(option);
             });
         }
@@ -484,7 +499,7 @@
 
             if (membersData.length === 0) {
                 if (userType === 'siswa') {
-                    tbody.innerHTML = '<tr><td colspan="5" class="px-4 py-8 text-center text-gray-500">Data kartu pustaka Anda tidak ditemukan</td></tr>';
+                    tbody.innerHTML = '<tr><td colspan="2" class="px-4 py-8 text-center text-gray-500">Data kartu pustaka Anda tidak ditemukan</td></tr>';
                 } else {
                     tbody.innerHTML = '<tr><td colspan="5" class="px-4 py-8 text-center text-gray-500">Tidak ada data</td></tr>';
                 }
@@ -501,13 +516,10 @@
                 const email = member.Email || member.email || 'N/A';
                 const status = member.Status || member.status || 'Aktif';
                 
-                // For students, show full data only for their own record
+                // For students, show only name and status
                 if (userType === 'siswa') {
                     row.innerHTML = `
                         <td class="px-4 py-3 text-sm text-gray-900">${name}</td>
-                        <td class="px-4 py-3 text-sm font-mono text-gray-900">${id}</td>
-                        <td class="px-4 py-3 text-sm text-gray-900">${kelas}</td>
-                        <td class="px-4 py-3 text-sm text-gray-900">${email}</td>
                         <td class="px-4 py-3">
                             <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full ${status.toLowerCase() === 'aktif' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">
                                 ${status}
@@ -857,5 +869,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97ddb5d4d69f3e2a',t:'MTc1NzY2MjMzOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97ddd6c84494834b',t:'MTc1NzY2MzY4OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
