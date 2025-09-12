@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +11,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; }
         .card-shadow { box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .gradient-bg { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
         .login-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
         .print-card { 
             width: 350px !important; 
@@ -23,7 +22,7 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
         }
         .card-header-print {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
             color: white !important;
             padding: 16px !important;
             height: 64px !important;
@@ -123,11 +122,22 @@
                     
                     <!-- Member Selection and Actions -->
                     <div class="flex flex-col md:flex-row gap-4 items-center">
-                        <div class="flex-1">
+                        <div id="adminMemberSelect" class="flex-1">
                             <label class="block text-sm font-medium text-gray-700 mb-2">Pilih Anggota:</label>
                             <select id="memberSelect" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                 <option value="">Memuat data...</option>
                             </select>
+                        </div>
+                        <div id="studentInfo" class="flex-1 hidden">
+                            <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                                <div class="flex items-center gap-2">
+                                    <div class="text-green-600 text-xl">👨‍🎓</div>
+                                    <div>
+                                        <p class="text-sm font-medium text-green-800">Kartu Pustaka Anda:</p>
+                                        <p id="studentCardInfo" class="text-green-700 font-semibold">-</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="flex gap-2">
                             <button id="refreshBtn" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
@@ -159,24 +169,32 @@
                 </div>
 
                 <!-- Card Body -->
-                <div class="p-4 h-40">
-                    <div class="flex h-full">
+                <div class="p-4 h-40 relative" style="background: linear-gradient(135deg, rgba(240, 253, 244, 0.8) 0%, rgba(220, 252, 231, 0.8) 100%);">
+                    <!-- Background Logo -->
+                    <div class="absolute inset-0 flex items-center justify-center opacity-10">
+                        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjZW-eGJTmGXl5hNvckcupmSEiQdJSEp8lx3FF7yk53hiwS6X519yjimobI5cYYmgxdhOfdrnBIwARdUWTE56zjETfAIiEGZfYxF6A7XEuvJmS-FauIaIvMI3vPoUss9hQtZos3inFh6QHjL1QvI1JaJhZpB5vu9Kl1XZ5mZ37OTbIbfYVMbD86TQX04fCw" 
+                             alt="School Logo" 
+                             class="w-32 h-32 object-contain"
+                             onerror="this.style.display='none';">
+                    </div>
+                    
+                    <div class="flex h-full relative z-10">
                         <!-- Left Side - Member Info -->
                         <div class="flex-1 pr-3">
                             <div class="mb-2">
-                                <p class="text-xs text-gray-500 uppercase tracking-wide">Nama</p>
+                                <p class="text-xs text-gray-600 uppercase tracking-wide">Nama</p>
                                 <p id="memberName" class="font-semibold text-gray-800 text-sm">-</p>
                             </div>
                             <div class="mb-2">
-                                <p class="text-xs text-gray-500 uppercase tracking-wide">ID Anggota</p>
+                                <p class="text-xs text-gray-600 uppercase tracking-wide">ID Anggota</p>
                                 <p id="memberId" class="font-mono text-sm text-gray-800">-</p>
                             </div>
                             <div class="mb-2">
-                                <p class="text-xs text-gray-500 uppercase tracking-wide">Kelas</p>
+                                <p class="text-xs text-gray-600 uppercase tracking-wide">Kelas</p>
                                 <p id="memberClass" class="text-sm text-gray-800">-</p>
                             </div>
                             <div>
-                                <p class="text-xs text-gray-500 uppercase tracking-wide">Berlaku Hingga</p>
+                                <p class="text-xs text-gray-600 uppercase tracking-wide">Berlaku Hingga</p>
                                 <p id="expiryDate" class="text-sm text-gray-800">-</p>
                             </div>
                         </div>
@@ -184,7 +202,7 @@
                         <!-- Right Side - Barcode -->
                         <div class="w-24 flex flex-col items-center justify-center">
                             <svg id="barcode" class="mb-1"></svg>
-                            <p class="text-xs text-gray-500 text-center">Scan untuk akses</p>
+                            <p class="text-xs text-gray-600 text-center">Scan untuk akses</p>
                         </div>
                     </div>
                 </div>
@@ -386,6 +404,8 @@
                     if (selectedUserType === 'siswa') {
                         document.getElementById('adminControls').style.display = 'none';
                         document.getElementById('printAllBtn').style.display = 'none';
+                        document.getElementById('adminMemberSelect').style.display = 'none';
+                        document.getElementById('studentInfo').classList.remove('hidden');
                         
                         // Update table header for students - only show Nama and Status
                         document.getElementById('tableHeader').innerHTML = `
@@ -461,9 +481,12 @@
                 if (membersData.length > 0) {
                     updateCard(membersData[0]);
                     
-                    // For students, auto-select their card
+                    // For students, auto-select their card and update info display
                     if (userType === 'siswa') {
                         document.getElementById('memberSelect').value = '0';
+                        const studentName = membersData[0].Nama || membersData[0].Name || 'Nama tidak tersedia';
+                        const studentId = membersData[0].ID || membersData[0].id || 'ID tidak tersedia';
+                        document.getElementById('studentCardInfo').textContent = `${studentName} - ${studentId}`;
                     }
                 }
             } catch (error) {
@@ -476,20 +499,23 @@
         // Populate select dropdown
         function populateSelect() {
             const select = document.getElementById('memberSelect');
+            
+            // For students, don't populate the select since they can't choose
+            if (userType === 'siswa') {
+                select.innerHTML = '<option value="0">Kartu Anda</option>';
+                select.value = '0';
+                select.disabled = true;
+                return;
+            }
+            
+            // For admin, populate normally
             select.innerHTML = '<option value="">Pilih anggota...</option>';
+            select.disabled = false;
             
             membersData.forEach((member, index) => {
                 const option = document.createElement('option');
                 option.value = index;
-                
-                // For students, only show their own name without ID for privacy
-                if (userType === 'siswa') {
-                    option.textContent = `${member.Nama || member.Name || 'Nama tidak tersedia'}`;
-                } else {
-                    // For admin, show full details
-                    option.textContent = `${member.Nama || member.Name || 'Nama tidak tersedia'} - ${member.ID || member.id || 'ID tidak tersedia'}`;
-                }
-                
+                option.textContent = `${member.Nama || member.Name || 'Nama tidak tersedia'} - ${member.ID || member.id || 'ID tidak tersedia'}`;
                 select.appendChild(option);
             });
         }
@@ -641,29 +667,37 @@
                         <div style="font-size: 24px;">📚</div>
                     </div>
                 </div>
-                <div class="card-body-print">
-                    <div style="display: flex; height: 100%;">
+                <div class="card-body-print" style="background: linear-gradient(135deg, rgba(240, 253, 244, 0.8) 0%, rgba(220, 252, 231, 0.8) 100%); position: relative;">
+                    <!-- Background Logo -->
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: center; opacity: 0.1;">
+                        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjZW-eGJTmGXl5hNvckcupmSEiQdJSEp8lx3FF7yk53hiwS6X519yjimobI5cYYmgxdhOfdrnBIwARdUWTE56zjETfAIiEGZfYxF6A7XEuvJmS-FauIaIvMI3vPoUss9hQtZos3inFh6QHjL1QvI1JaJhZpB5vu9Kl1XZ5mZ37OTbIbfYVMbD86TQX04fCw" 
+                             alt="School Logo" 
+                             style="width: 128px; height: 128px; object-fit: contain;"
+                             onerror="this.style.display='none';">
+                    </div>
+                    
+                    <div style="display: flex; height: 100%; position: relative; z-index: 10;">
                         <div style="flex: 1; padding-right: 12px;">
                             <div style="margin-bottom: 8px;">
-                                <p style="font-size: 10px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em; margin: 0;">Nama</p>
+                                <p style="font-size: 10px; color: #4b5563; text-transform: uppercase; letter-spacing: 0.05em; margin: 0;">Nama</p>
                                 <p style="font-weight: 600; color: #1f2937; font-size: 14px; margin: 2px 0 0 0;">${member.Nama || member.Name || '-'}</p>
                             </div>
                             <div style="margin-bottom: 8px;">
-                                <p style="font-size: 10px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em; margin: 0;">ID Anggota</p>
+                                <p style="font-size: 10px; color: #4b5563; text-transform: uppercase; letter-spacing: 0.05em; margin: 0;">ID Anggota</p>
                                 <p style="font-family: monospace; font-size: 14px; color: #1f2937; margin: 2px 0 0 0;">${member.ID || member.id || '-'}</p>
                             </div>
                             <div style="margin-bottom: 8px;">
-                                <p style="font-size: 10px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em; margin: 0;">Kelas</p>
+                                <p style="font-size: 10px; color: #4b5563; text-transform: uppercase; letter-spacing: 0.05em; margin: 0;">Kelas</p>
                                 <p style="font-size: 14px; color: #1f2937; margin: 2px 0 0 0;">${member.Kelas || member.Class || member.Grade || '-'}</p>
                             </div>
                             <div>
-                                <p style="font-size: 10px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em; margin: 0;">Berlaku Hingga</p>
+                                <p style="font-size: 10px; color: #4b5563; text-transform: uppercase; letter-spacing: 0.05em; margin: 0;">Berlaku Hingga</p>
                                 <p style="font-size: 14px; color: #1f2937; margin: 2px 0 0 0;">${new Date(Date.now() + 365*24*60*60*1000).toLocaleDateString('id-ID')}</p>
                             </div>
                         </div>
                         <div style="width: 96px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
                             <svg class="temp-barcode" style="margin-bottom: 4px;"></svg>
-                            <p style="font-size: 10px; color: #6b7280; text-align: center; margin: 0;">Scan untuk akses</p>
+                            <p style="font-size: 10px; color: #4b5563; text-align: center; margin: 0;">Scan untuk akses</p>
                         </div>
                     </div>
                 </div>
@@ -872,6 +906,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97dde25f72bf8342',t:'MTc1NzY2NDE2NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97de06a96505c51a',t:'MTc1NzY2NTY1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
-
