@@ -171,7 +171,7 @@
                 <!-- Card Body -->
                 <div class="p-4 h-40 relative" style="background: linear-gradient(135deg, rgba(240, 253, 244, 0.8) 0%, rgba(220, 252, 231, 0.8) 100%);">
                     <!-- Background Logo -->
-                    <div class="absolute inset-0 flex items-center justify-center opacity-10">
+                    <div class="absolute inset-0 flex items-center justify-center opacity-25">
                         <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjZW-eGJTmGXl5hNvckcupmSEiQdJSEp8lx3FF7yk53hiwS6X519yjimobI5cYYmgxdhOfdrnBIwARdUWTE56zjETfAIiEGZfYxF6A7XEuvJmS-FauIaIvMI3vPoUss9hQtZos3inFh6QHjL1QvI1JaJhZpB5vu9Kl1XZ5mZ37OTbIbfYVMbD86TQX04fCw" 
                              alt="School Logo" 
                              class="w-32 h-32 object-contain"
@@ -669,7 +669,7 @@
                 </div>
                 <div class="card-body-print" style="background: linear-gradient(135deg, rgba(240, 253, 244, 0.8) 0%, rgba(220, 252, 231, 0.8) 100%); position: relative;">
                     <!-- Background Logo -->
-                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: center; opacity: 0.1;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: center; opacity: 0.25;">
                         <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjZW-eGJTmGXl5hNvckcupmSEiQdJSEp8lx3FF7yk53hiwS6X519yjimobI5cYYmgxdhOfdrnBIwARdUWTE56zjETfAIiEGZfYxF6A7XEuvJmS-FauIaIvMI3vPoUss9hQtZos3inFh6QHjL1QvI1JaJhZpB5vu9Kl1XZ5mZ37OTbIbfYVMbD86TQX04fCw" 
                              alt="School Logo" 
                              style="width: 128px; height: 128px; object-fit: contain;"
@@ -906,5 +906,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97de06a96505c51a',t:'MTc1NzY2NTY1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97de15b2a2bea8c3',t:'MTc1NzY2NjI2Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
