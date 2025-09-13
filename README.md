@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -170,9 +169,9 @@
                 </div>
 
                 <!-- Card Body -->
-                <div class="p-4 h-40 relative" style="background: linear-gradient(135deg, rgba(240, 253, 244, 0.8) 0%, rgba(220, 252, 231, 0.8) 100%);">
+                <div class="p-4 h-40 relative" style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);">
                     <!-- Background Logo -->
-                    <div class="absolute inset-0 flex items-center justify-center opacity-25">
+                    <div class="absolute inset-0 flex items-center justify-center opacity-40">
                         <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjZW-eGJTmGXl5hNvckcupmSEiQdJSEp8lx3FF7yk53hiwS6X519yjimobI5cYYmgxdhOfdrnBIwARdUWTE56zjETfAIiEGZfYxF6A7XEuvJmS-FauIaIvMI3vPoUss9hQtZos3inFh6QHjL1QvI1JaJhZpB5vu9Kl1XZ5mZ37OTbIbfYVMbD86TQX04fCw" 
                              alt="School Logo" 
                              class="w-32 h-32 object-contain"
@@ -668,9 +667,9 @@
                         <div style="font-size: 24px;">📚</div>
                     </div>
                 </div>
-                <div class="card-body-print" style="background: linear-gradient(135deg, rgba(240, 253, 244, 0.8) 0%, rgba(220, 252, 231, 0.8) 100%); position: relative;">
+                <div class="card-body-print" style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%); position: relative;">
                     <!-- Background Logo -->
-                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: center; opacity: 0.25;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: center; opacity: 0.4;">
                         <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjZW-eGJTmGXl5hNvckcupmSEiQdJSEp8lx3FF7yk53hiwS6X519yjimobI5cYYmgxdhOfdrnBIwARdUWTE56zjETfAIiEGZfYxF6A7XEuvJmS-FauIaIvMI3vPoUss9hQtZos3inFh6QHjL1QvI1JaJhZpB5vu9Kl1XZ5mZ37OTbIbfYVMbD86TQX04fCw" 
                              alt="School Logo" 
                              style="width: 128px; height: 128px; object-fit: contain;"
@@ -813,12 +812,12 @@
                     format: 'a4'
                 });
 
-                // Calculate how many cards can fit per page (2x5 = 10 cards per page)
+                // Calculate how many cards can fit per page (2x2 = 4 cards per page)
                 const cardWidth = 85.6;
                 const cardHeight = 53.98;
-                const margin = 5;
+                const margin = 10;
                 const cardsPerRow = 2;
-                const cardsPerCol = 5;
+                const cardsPerCol = 2;
                 const cardsPerPage = cardsPerRow * cardsPerCol;
 
                 let cardCount = 0;
@@ -907,5 +906,6 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97e4515f039d3e17',t:'MTc1NzczMTYyNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97e52c4601679f89',t:'MTc1Nzc0MDU5MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
